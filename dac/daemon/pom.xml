@@ -90,27 +90,32 @@
       <artifactId>dremio-common</artifactId>
       <classifier>tests</classifier>
       <version>${project.version}</version>
-      <scope>test</scope>
+<!--      <scope>test</scope>-->
     </dependency>
     <dependency>
       <groupId>com.dremio.sabot</groupId>
       <artifactId>dremio-sabot-kernel</artifactId>
       <version>${project.version}</version>
       <classifier>tests</classifier>
-      <scope>test</scope>
+<!--      <scope>test</scope>-->
     </dependency>
     <dependency>
       <groupId>com.dremio</groupId>
       <artifactId>dremio-dac-backend</artifactId>
       <classifier>tests</classifier>
       <version>${project.version}</version>
-      <scope>test</scope>
+<!--      <scope>test</scope>-->
     </dependency>
     <dependency>
       <groupId>org.apache.hadoop</groupId>
       <artifactId>hadoop-common</artifactId>
       <classifier>tests</classifier>
-      <scope>test</scope>
+<!--      <scope>test</scope>-->
+    </dependency>
+    <dependency>
+      <groupId>com.dremio.sabot</groupId>
+      <artifactId>dremio-sabot-flight</artifactId>
+      <version>${project.version}</version>
     </dependency>
     <dependency>
       <groupId>org.apache.hadoop</groupId>

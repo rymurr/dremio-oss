@@ -18,6 +18,7 @@ package com.dremio.exec.planner.observer;
 import java.util.concurrent.Executor;
 
 import com.dremio.common.SerializedExecutor;
+import com.dremio.exec.planner.fragment.PlanningSet;
 import com.dremio.exec.work.AttemptId;
 import com.dremio.exec.work.protector.UserResult;
 import com.dremio.proto.model.attempts.AttemptReason;
@@ -47,6 +48,16 @@ public class OutOfBandQueryObserver extends AbstractQueryObserver {
       @Override
       public void run() {
         observer.execCompletion(result);
+      }
+    });
+  }
+
+  @Override
+  public void planParallelized(PlanningSet planningSet) {
+    serializedExec.execute(new Runnable() {
+      @Override
+      public void run() {
+        observer.planParallelized(planningSet);
       }
     });
   }

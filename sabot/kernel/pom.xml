@@ -73,12 +73,12 @@
       <groupId>com.dremio.contrib</groupId>
       <artifactId>dremio-slim-shade</artifactId>
       <version>${project.version}</version>
-      <exclusions>
-        <exclusion>
-          <artifactId>koloboke-impl-jdk6-7</artifactId>
-          <groupId>com.koloboke</groupId>
-        </exclusion>
-      </exclusions>
+<!--      <exclusions>-->
+<!--        <exclusion>-->
+<!--          <artifactId>koloboke-impl-jdk6-7</artifactId>-->
+<!--          <groupId>com.koloboke</groupId>-->
+<!--        </exclusion>-->
+<!--      </exclusions>-->
     </dependency>
 
     <dependency>

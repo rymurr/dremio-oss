@@ -15,6 +15,7 @@
  */
 package com.dremio.exec.planner.observer;
 
+import com.dremio.exec.planner.fragment.PlanningSet;
 import com.dremio.exec.work.AttemptId;
 import com.dremio.exec.work.protector.UserResult;
 import com.dremio.proto.model.attempts.AttemptReason;
@@ -38,4 +39,6 @@ public interface QueryObserver {
    * called when QueryJob is done and no more queries will be attempted
    */
   void execCompletion(UserResult result);
+
+  void planParallelized(PlanningSet planningSet);
 }

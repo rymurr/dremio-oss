@@ -13,18 +13,25 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-package com.dremio.exec.planner.observer;
+package com.dremio.flight.formation;
 
-import com.dremio.exec.planner.fragment.PlanningSet;
-import com.dremio.exec.work.protector.UserResult;
+import java.util.Set;
 
-public abstract class AbstractQueryObserver implements QueryObserver {
+import org.apache.calcite.plan.RelOptRule;
+
+import com.dremio.exec.catalog.conf.SourceType;
+import com.dremio.exec.ops.OptimizerRulesContext;
+import com.dremio.exec.planner.PlannerPhase;
+import com.dremio.exec.store.StoragePluginRulesFactory.StoragePluginTypeRulesFactory;
+import com.google.common.collect.ImmutableSet;
+
+public class FormationRulesFactory extends StoragePluginTypeRulesFactory {
 
   @Override
-  public void execCompletion(UserResult result) {}
+  public Set<RelOptRule> getRules(OptimizerRulesContext optimizerContext, PlannerPhase phase, SourceType pluginType) {
 
-  @Override
-  public void planParallelized(PlanningSet planningSet) {
-    System.out.println("foo");
+    return ImmutableSet.of();
+
   }
+
 }

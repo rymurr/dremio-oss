@@ -13,19 +13,21 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-package com.dremio.exec.work.protector;
+package com.dremio.flight.formation;
 
-import com.dremio.common.utils.protos.QueryWritableBatch;
-import com.dremio.exec.planner.fragment.PlanningSet;
-import com.dremio.exec.proto.GeneralRPCProtos.Ack;
-import com.dremio.exec.rpc.RpcOutcomeListener;
+import javax.inject.Provider;
 
-public interface UserResponseHandler {
+import com.dremio.exec.catalog.StoragePluginId;
+import com.dremio.exec.catalog.conf.ConnectionConf;
+import com.dremio.exec.catalog.conf.SourceType;
+import com.dremio.exec.server.SabotContext;
 
-  void sendData(RpcOutcomeListener<Ack> outcomeListener, QueryWritableBatch result);
+@SourceType("formation")
+public class FormationConfig extends ConnectionConf<FormationConfig, FormationPlugin> {
 
-  void completed(UserResult result);
-
-  default void planParallelized(PlanningSet planningSet) {};
+  @Override
+  public FormationPlugin newPlugin(SabotContext context, String name, Provider<StoragePluginId> pluginIdProvider) {
+    return new FormationPlugin(context, name, pluginIdProvider);
+  }
 
 }

@@ -93,6 +93,11 @@
       <version>${project.version}</version>
     </dependency>
     <dependency>
+      <groupId>com.dremio.sabot</groupId>
+      <artifactId>dremio-sabot-flight</artifactId>
+      <version>${project.version}</version>
+    </dependency>    
+    <dependency>
       <groupId>org.apache.arrow</groupId>
       <artifactId>arrow-vector</artifactId>
       <version>${arrow.version}</version>

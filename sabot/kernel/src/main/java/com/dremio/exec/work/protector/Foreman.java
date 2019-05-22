@@ -33,6 +33,7 @@ import com.dremio.exec.exception.JsonFieldChangeExceptionContext;
 import com.dremio.exec.exception.SchemaChangeExceptionContext;
 import com.dremio.exec.ops.QueryContext;
 import com.dremio.exec.planner.PlannerPhase;
+import com.dremio.exec.planner.fragment.PlanningSet;
 import com.dremio.exec.planner.observer.AttemptObserver;
 import com.dremio.exec.planner.observer.DelegatingAttemptObserver;
 import com.dremio.exec.planner.observer.QueryObserver;
@@ -459,6 +460,10 @@ public class Foreman {
       listener.completed();
     }
 
+    @Override
+    public void planParallelized(PlanningSet planningSet) {
+      super.planParallelized(planningSet);
+    }
   }
 
   private static class LowMemOptionProvider implements OptionProvider {

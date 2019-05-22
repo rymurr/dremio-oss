@@ -27,6 +27,7 @@ import java.util.concurrent.CountDownLatch;
 
 import javax.annotation.Nullable;
 
+import com.dremio.exec.planner.fragment.PlanningSet;
 import org.junit.Before;
 import org.junit.Test;
 
@@ -556,6 +557,9 @@ public class ITTestLimit extends ElasticBaseTestQuery {
         }
       };
     }
+
+    @Override
+    public void planParallelized(PlanningSet planningSet) {}
 
     @Override
     public void execCompletion(UserResult result) {

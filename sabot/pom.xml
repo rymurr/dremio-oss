@@ -33,5 +33,6 @@
   <modules>
     <module>logical</module>
     <module>kernel</module>
+    <module>flight</module>
   </modules>
 </project>

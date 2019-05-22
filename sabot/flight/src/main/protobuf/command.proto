@@ -13,19 +13,15 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-package com.dremio.exec.work.protector;
+syntax="proto2";
+package com.dremio.proto.flight.commands;
 
-import com.dremio.common.utils.protos.QueryWritableBatch;
-import com.dremio.exec.planner.fragment.PlanningSet;
-import com.dremio.exec.proto.GeneralRPCProtos.Ack;
-import com.dremio.exec.rpc.RpcOutcomeListener;
+option java_package = "com.dremio.proto.flight.commands";
+option optimize_for = SPEED;
 
-public interface UserResponseHandler {
-
-  void sendData(RpcOutcomeListener<Ack> outcomeListener, QueryWritableBatch result);
-
-  void completed(UserResult result);
-
-  default void planParallelized(PlanningSet planningSet) {};
-
+message Command {
+  required string query = 1;
+  required bool parallel = 2;
+  required bool coalesce = 3;
+  required bytes ticket = 4;
 }

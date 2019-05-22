@@ -986,6 +986,11 @@ public class LocalJobsService implements JobsService {
     }
 
     @Override
+    public void planParallelized(PlanningSet planningSet) {
+      responseHandler.planParallelized(planningSet);
+    }
+
+    @Override
     public AttemptObserver newAttempt(AttemptId attemptId, AttemptReason reason) {
       // first attempt is already part of the job
       if (attemptId.getAttemptNum() > 0) {
@@ -1197,6 +1202,12 @@ public class LocalJobsService implements JobsService {
       super(attemptId, job, allocator, NoOpJobStatusListener.INSTANCE, metadataCompletionLatch);
       this.connection = connection;
       this.externalId = JobsServiceUtil.getJobIdAsExternalId(job.getJobId());
+    }
+
+    @Override
+    public void planParallelized(PlanningSet planningSet) {
+      super.planParallelized(planningSet);
+      connection.planParallelized(planningSet);
     }
 
     @Override

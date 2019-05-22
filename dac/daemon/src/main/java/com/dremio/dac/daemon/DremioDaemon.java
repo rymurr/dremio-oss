@@ -91,11 +91,11 @@ public class DremioDaemon {
       final SabotConfig sabotConfig = config.getConfig().getSabotConfig();
       final ScanResult classPathScan = ClassPathScanner.fromPrescan(sabotConfig);
 
-      if (config.isMaster) {
+//      if (config.isMaster) {
         // Try autoupgrade before starting daemon
-        AutoUpgrade autoUpgrade = new AutoUpgrade(config, classPathScan);
-        autoUpgrade.run(false);
-      }
+//        AutoUpgrade autoUpgrade = new AutoUpgrade(config, classPathScan);
+//        autoUpgrade.run(false);
+//      }
 
       final DACModule module = sabotConfig.getInstance(DAEMON_MODULE_CLASS, DACModule.class, DACDaemonModule.class);
       final DACDaemon daemon = DACDaemon.newDremioDaemon(config, classPathScan, module);

@@ -16,6 +16,7 @@
 package com.dremio.exec.planner.observer;
 
 import com.dremio.common.utils.protos.ExternalIdHelper;
+import com.dremio.exec.planner.fragment.PlanningSet;
 import com.dremio.exec.proto.UserBitShared.ExternalId;
 import com.dremio.exec.work.AttemptId;
 import com.dremio.exec.work.protector.UserResponseHandler;
@@ -48,6 +49,11 @@ public class RemoteQueryObserverFactory implements QueryObserverFactory {
     @Override
     public void execCompletion(UserResult result) {
       handler.completed(result.withNewQueryId(ExternalIdHelper.toQueryId(externalId)));
+    }
+
+    @Override
+    public void planParallelized(PlanningSet planningSet) {
+      handler.planParallelized(planningSet);
     }
   }
 }
